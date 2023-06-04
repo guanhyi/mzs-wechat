@@ -1,0 +1,9 @@
+<view>
+    <view class="avater" bindtap="editAvater">
+        <image src="{{user.headUrl}}" />
+        <view class="mt-20rpx" style="color:#999;font-size:24rpx">更换头像</view>
+    </view> 
+    <t-cell title="昵称" class="mt-20rpx" note="{{user.userName}}" hover arrow bordered="{{true}}" url="../edit-username/edit-username" />
+    <t-cell title="年纪" hover note="{{grade}}" bordered="{{true}}"   bindtap="call" />
+    <t-cell title="常住地" url="../edit-address/edit-address" hover arrow bordered="{{true}}"  bindtap="call" />
+</view>

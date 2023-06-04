@@ -1,0 +1,48 @@
+.login {
+    /* position: absolute; */
+    /* height: 100vh; */
+    width: 100vw;
+    /* display: flex; */
+}
+
+.login image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: -1;
+    display: block;
+}
+
+.btn-group {
+    /* position: absolute; */
+    margin-top: 60vh;
+    padding: 0 40rpx;
+}
+
+.btn-group .btn {
+    margin-top: 50rpx;
+}
+
+.agreement {
+    left: 40rpx;
+    position: absolute;
+    bottom: 70rpx;
+    font-size: 30rpx;
+    display: flex;
+    align-items: center;
+}
+.agreement .agreement-text{
+    margin-left: 20rpx;
+}
+.agree-green{
+    color: #59c5c3;
+}
+.phone-popup{
+background-color: white;
+padding: 64rpx;
+width: 70vw;
+}
+.phone-btn{
+    margin-top: 40rpx;
+}

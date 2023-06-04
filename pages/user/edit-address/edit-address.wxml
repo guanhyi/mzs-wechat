@@ -1,0 +1,17 @@
+<view>
+
+    <t-cell title="省份" hover arrow bordered="{{true}}" note="{{provincesText}}" bindtap="showProvinces" />
+    <t-cell title="城市" hover arrow note="{{cityText}}" bordered="{{true}}" bindtap="showCity" />
+    <t-cell title="区县"  hover arrow bordered="{{true}}" note="{{areaText}}" bindtap="showArea" />
+
+    <t-picker visible="{{provincesVisible}}" value="{{[provincesValue]}}" data-key="provinces" title="选择省份" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerProvinces" >
+        <t-picker-item  options="{{provincesList}}" />
+    </t-picker>
+    <t-picker visible="{{cityVisible}}" value="{{[cityValue]}}" data-key="city" title="选择城市" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerCity" >
+        <t-picker-item  options="{{cityList}}" />
+    </t-picker>
+    <t-picker visible="{{areaVisible}}" value="{{[areaValue]}}" data-key="area" title="选择区县" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerArea" >
+        <t-picker-item  options="{{areaList}}" />
+    </t-picker>
+    <button class="btn  mt-20rpx" block bindtap="save">保存</button>
+</view>

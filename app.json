@@ -1,0 +1,69 @@
+{
+    "pages": [
+        "pages/home/home",
+        "pages/user/user",
+        "pages/login/login",
+        "pages/login/privacy/privacy",
+        "pages/login/user/user",
+        "pages/login/username-login/username-login",
+        "pages/class-list/class-list",
+        "pages/class-detail/class-detail",
+        "pages/user/setting/setting",
+        "pages/user/about/about",
+        "pages/user/edit-password/edit-password",
+        "pages/user/user-info/user-info",
+        "pages/user/edit-username/edit-username",
+        "pages/user/edit-address/edit-address",
+        "pages/user/logistics/logistics",
+        "pages/class-pay/class-pay",
+        "pages/class-pay/pay/pay",
+        "pages/class-pay/assemble/assemble",
+        "pages/class-pay/share/share",
+        "pages/class-pay/share-viewWeb/share-viewWeb"
+    ],
+    "usingComponents": {
+        "t-demo": "./components/demo-block/index",
+        "t-button": "tdesign-miniprogram/button/button",
+        "t-icon": "tdesign-miniprogram/icon/icon",
+        "t-tabs": "tdesign-miniprogram/tabs/tabs",
+        "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel",
+        "t-input": "tdesign-miniprogram/input/input",
+        "t-picker": "tdesign-miniprogram/picker/picker",
+        "t-picker-item": "tdesign-miniprogram/picker-item/picker-item",
+        "t-textarea": "tdesign-miniprogram/textarea/textarea",
+        "t-count-down": "tdesign-miniprogram/count-down/count-down"
+    },
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#5acfcb",
+        "backgroundColor": "#f6f6f6",
+        "navigationBarTextStyle": "white"
+    },
+    "sitemapLocation": "sitemap.json",
+    "tabBar": {
+        "color": "#999",
+        "selectedColor": "#5acfcb",
+        "backgroundColor": "#fff",
+        "borderStyle": "white",
+        "list": [
+            {
+                "text": "首页",
+                "pagePath": "pages/home/home",
+                "iconPath": "/assets/image/home.png",
+                "selectedIconPath": "/assets/image/home-act.png"
+            },
+            {
+                "text": "我的",
+                "pagePath": "pages/user/user",
+                "iconPath": "/assets/image/my.png",
+                "selectedIconPath": "/assets/image/my-act.png"
+            }
+        ]
+    },
+    "permission": {
+        "scope.userLocation": {
+            "desc": "您的位置信息将用于小程序位置接口的效果展示"
+        }
+    }
+  
+}

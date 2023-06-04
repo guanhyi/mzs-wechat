@@ -1,0 +1,120 @@
+{
+    "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+    "projectname": "mzs",
+    "setting": {
+        "compileHotReLoad": true,
+        "urlCheck": false
+    },
+    "condition": {
+        "miniprogram": {
+            "list": [
+                {
+                    "name": "登录",
+                    "pathName": "pages/login/login",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "账号登录",
+                    "pathName": "pages/login/username-login/username-login",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/home/home",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/class-list/class-list",
+                    "query": "pid=457&subjectId=4",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/class-detail/class-detail",
+                    "query": "id=5448&videocode=2befbba1&buyif=false&pid=457",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/user/user",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "修改密码",
+                    "pathName": "pages/user/edit-password/edit-password",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "个人信息",
+                    "pathName": "pages/user/user-info/user-info",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "修改地址",
+                    "pathName": "pages/user/edit-address/edit-address",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "物流信息",
+                    "pathName": "pages/user/logistics/logistics",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "购买教程",
+                    "pathName": "pages/class-pay/class-pay",
+                    "query": "id=5381&videocode=ff8abb22&buyif=false&pid=450",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "购买页面",
+                    "pathName": "pages/class-pay/pay/pay",
+                    "query": "title=%E8%B4%AD%E4%B9%B0%E6%9C%AC%E6%95%99%E6%9D%90&price=50&videoCode=5381",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "拼团",
+                    "pathName": "pages/class-pay/assemble/assemble",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "拼团购买",
+                    "pathName": "pages/class-pay/pay/pay",
+                    "query": "title=%E8%B4%AD%E4%B9%B0%E6%9C%AC%E6%95%99%E6%9D%90&price=800&videoCode=5381&pid=450",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "分享",
+                    "pathName": "pages/class-pay/share/share",
+                    "query": "id=2305311034336880000",
+                    "launchMode": "default",
+                    "scene": null
+                }
+            ]
+        }
+    },
+    "libVersion": "2.32.0"
+}

@@ -1,0 +1,46 @@
+<view class="pay">
+
+    <view class="switch-block">
+        <view bindtap="post" class="span {{post === 0?'active':''}}">自取</view>
+        <view bindtap="post" class="span {{post === 1?'active':''}}">邮寄</view>
+    </view>
+    <view wx:if="{{post == 0}}">
+        <view class="pay-address-title">
+            自取地址
+        </view>
+        <view class="pay-address">
+            丽水市山山梦想城B座6楼明之算
+        </view>
+    </view>
+    <view wx:else>
+        <view class="pay-address-title">
+            收件人(必填)
+        </view>
+        <t-input bindchange="getUsername" class="input" value="{{username}}" placeholder="请输入收件人"></t-input>
+        <view class="pay-address-title">
+            联系方式(必填)
+        </view>
+        <t-input bindchange="getMobile" class="input" value="{{mobile}}" placeholder="请输入联系方式"></t-input>
+        <view class="pay-address-title">
+            省市(必填)
+        </view>
+        <t-cell title="{{cityText}}" class="cell" hover bordered="{{true}}" bindtap="showCity" />
+        <view class="pay-address-title">
+            详细地址(必填)
+        </view>
+        <t-textarea bindchange="getAddress" class="textarea" value="{{address}}" placeholder="请输入详情地址" />
+    </view>
+    <view class="buy-group-cancel">
+        <view bindtap="cancel" class="buy-item-cancel"><text>取消</text></view>
+        <view bindtap="buyVideo" class="buy-item">
+            <view>
+                <text class="buy-price">¥{{ post == 0 ? price : postPrice }}</text>
+                <text>确认购买</text>
+            </view>
+            <view wx:if="{{post == 1}}" class="item-flex">含邮费：{{ postPrice- price }}元</view>
+        </view>
+    </view>
+    <t-picker visible="{{cityVisible}}" value="{{[city]}}" data-key="city" title="选择省市" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerCancel">
+        <t-picker-item options="{{cityList}}" />
+    </t-picker>
+</view>

@@ -1,0 +1,21 @@
+<view>
+    <block wx:if="{{list.length}}">
+        <view wx:for="{{list}}" wx:key="index" class="classList" bindtap="jump" data-id="{{item.id}}" data-videoCode="{{item.videoCode}}" data-buyIf="{{item.buyIf}}">
+            <image wx:if="{{item.unitPrice == 0}}" src="../../assets/image/free.png" mode="aspectFill" class="class-img"></image>
+            <image wx:elif="{{item.buyIf == true}}" src="../../assets/image/charge1.png" mode="aspectFill" class="class-img"></image>
+            <image wx:else src="../../assets/image/charge.png" mode="aspectFill" class="class-img"></image>
+            <view class="class-title">
+                {{item.title}}
+            </view>
+            <view class="schedule" wx:if="{{item['schedule'] > 0}}">
+                上次看到:{{ item['schedule'] ? item['schedule'] : '0' }}%
+            </view>
+            <view class="progress-bar" style="{{'width:' + (item['schedule'] ? item['schedule'] : '0') + '%'}}"></view>
+            <t-icon name="chevron-right" size="48rpx" style="color:#b2b2b2" />
+        </view>
+    </block>
+    <view wx:else class="no-reply">
+        暂无该系列教程
+    </view>
+
+</view>

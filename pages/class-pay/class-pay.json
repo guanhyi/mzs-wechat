@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "t-popup": "tdesign-miniprogram/popup/popup",
+        "Time":"../../components/timer/timer",
+        "t-cell": "tdesign-miniprogram/cell/cell"
+    },
+    "navigationBarTitleText": "教程详情"
+}

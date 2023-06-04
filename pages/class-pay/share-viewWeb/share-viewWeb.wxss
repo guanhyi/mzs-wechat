@@ -1,0 +1,43 @@
+/* pages/class-pay/share-viewWeb/share-viewWeb.wxss */
+.share-webView{
+    position: relative;
+}
+.share-btn-share{
+    position: fixed;
+    width: 50vw;
+    height: 10vh;
+    background-color: #FF92A5;
+    z-index: 99999;
+    top: 980rpx;
+    left: 0;
+    color: #fff;
+    font-size: 32rpx;
+    text-align: center;
+    line-height: 10vh;
+}
+.share-btn-join{
+    position: fixed;
+    width: 50vw;
+    height: 10vh;
+    background-color: #FF4966;
+    z-index: 99999;
+    top: 980rpx;
+    right: 0;
+    color: #fff;
+    font-size: 32rpx;
+    text-align: center;
+    line-height: 10vh;
+}
+.share-btn{
+    
+}
+.share-btn{
+    width: 100%;
+    height: 10vh;
+    z-index: 1;
+    position: absolute;
+    background-color: #FF92A5;
+    color: #fff;
+    font-size: 32rpx;
+    line-height: 10vh;
+}

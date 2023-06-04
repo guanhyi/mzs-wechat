@@ -1,0 +1,15 @@
+<view class="username-login">
+    <image src="../../../assets/image/login-bg.png" mode="widthFix" />
+    <view class="body">
+        <t-input bindchange="getUsername" class="input" label=""  value="{{username}}" placeholder="账号或手机号"></t-input>
+        <t-input  bindchange="getPassword" class="input" label="" type="password" value="{{password}}" placeholder="密码"></t-input>
+       <view class="agreement"> <checkbox bindtap="changeCheck" checked="{{checkbox}}" />
+        <view class="agreement-text">
+            我已阅读并同意
+            <text class="agree-green" bindtap="goUser" >《用户协议》</text>和
+            <text class="agree-green" bindtap="goPrivacy">《隐私协议》</text>
+        </view></view>
+        <button block class="login btn" bindtap="login">登录</button>
+
+    </view>
+</view>

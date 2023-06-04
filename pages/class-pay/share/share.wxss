@@ -1,0 +1,133 @@
+@import "../../../wxParse/wxParse.wxss";
+.share-bg {
+    background-color: #FA253E;
+    height: 100vh;
+}
+
+.share-sub {
+    color: white;
+    text-align: center;
+    font-size: 28rpx;
+    padding-top: 20rpx;
+}
+
+.share-box {
+    background-color: white;
+    border: 1px solid #fff;
+    padding: 20rpx 28rpx;
+    margin: 0 30rpx;
+    border-radius: 10rpx;
+    margin-top: 20rpx;
+}
+
+.share-price {
+    color: red;
+    font-size: 40rpx;
+}
+
+.share-realPrice {
+    color: #999;
+    text-decoration: line-through;
+}
+
+.share-time {
+    border: 2px solid #F87387;
+    padding: 5rpx 10rpx;
+    color: #FA253E;
+}
+
+.share-people {
+    background-color: white;
+    padding: 20rpx;
+    margin-top: 30rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.share-avaterList {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.share-next{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    background:#FDDCDD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60rpx;
+    color: #F87387;
+}
+
+.share-avaterList image {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    margin: 0 20rpx;
+}
+.share-videoCount{
+
+    color: #F87387;
+
+}
+
+.share-downtime{
+    margin-top: 30rpx;
+    display: flex;
+    align-items: center;
+}
+.share-downtime-time{
+    display: flex;
+}
+.share-downtime .t-count-down{
+    
+    margin: 0 20rpx;
+}
+.share-ht{
+    width: 100rpx;
+    height: 6rpx;
+    background: #e6e6e6;
+    margin:0 20rpx;
+}
+
+.share-context{
+    margin-top: 30rpx;
+    background: white;
+}
+.share-cell{
+    display: flex;
+    justify-content: space-between;
+    padding:30rpx;
+    border-bottom: 2rpx solid #eee;
+    font-size: 30rpx;
+}
+.share-cell-value{
+    color: #999;
+}
+.share-btns{
+    display: flex;
+}
+.share-btn{
+    background:#FF4966;
+    border-radius: 0!important;
+    color: white;
+    width: 100%;
+}
+
+.share-footer{
+    padding:50rpx 30rpx;
+    display: flex;
+    font-size: 22rpx;
+    justify-content: space-between;
+}
+.share-footer-icon{
+    display: flex;
+    align-items: center;
+    width: 22%;
+}
+.share-footer-icon .t-icon{
+    color:#F87387
+}

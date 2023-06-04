@@ -1,0 +1,13 @@
+<view class="about">
+    <view class="about-header">
+
+        <image src="../../../assets/image/icon.png"></image>
+        <view class="mt-20rpx">
+            明之算课外
+        </view>
+
+    </view>
+    <t-cell class="mt-20rpx" title="用户协议" url="../../login/user/user" hover arrow bordered="{{true}}" />
+    <t-cell title="隐私协议" url="../../login/privacy/privacy" hover arrow bordered="{{true}}" />
+    <t-cell title="联系我们" hover arrow bindtap="call" />
+</view>
