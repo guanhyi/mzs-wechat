@@ -10,7 +10,9 @@ Page({
         checkbox: false,
         visible: false,
         visibleAvatar: false,
-        phone: ''
+        phone: '',
+        avatar:'../../assets/image/my.png',
+        nickname:''
     },
 
     /**
@@ -110,14 +112,21 @@ Page({
         const {
             avatarUrl
         } = e.detail
+        this.setData({
+            avatar:avatarUrl
+        })
+     
+    },
+    submit(){
+ 
 
-        wx.login({
+   wx.login({
             success: (res) => {
                 loginService.weixinRegist({
                     wxCode: res.code,
                     userId: this.data.phone,
-                    nickName: this.data.phone,
-                    headUrl: avatarUrl,
+                    nickName: this.data.nickname,
+                    headUrl: this.data.avatar,
                     grade: '其他',
                     deviceType: app.globalData.systemInfo.system.indexOf('iOS') > -1 ? 1 : 0,
                 }).then(re => {
@@ -133,7 +142,6 @@ Page({
             },
         })
     },
-
     onVisibleAvatarChange() {
         this.setData({
             visibleAvatar: false

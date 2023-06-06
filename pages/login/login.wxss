@@ -5,7 +5,7 @@
     /* display: flex; */
 }
 
-.login image {
+.login .login-image {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -44,5 +44,28 @@ padding: 64rpx;
 width: 70vw;
 }
 .phone-btn{
+    margin-top:20rpx;
+}
+.info{
+    text-align: center;
+}
+.info-avater{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.info image{
+    border: 1px solid #eee;
+    width: 100rpx;
+    height: 100rpx;
+}
+.info input{
+    border: 1px solid #eee;
+    height: 100rpx;
+    margin-top: 20rpx;
+    border-radius: 20rpx;
+}
+.subimt-btn{
     margin-top: 40rpx;
 }
