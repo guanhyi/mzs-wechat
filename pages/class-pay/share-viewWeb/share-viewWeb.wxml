@@ -1,0 +1,13 @@
+ 
+<view class="share-webView">
+    <web-view class="share-web" src="{{url}}">
+    <cover-view wx:if="{{isShow}}"  class="share-btn-share"  bindtap="onshare" >
+        <button open-type="share"  class="share-btn">转发</button>
+    </cover-view>
+    <cover-view  wx:if="{{isShow}}" class="share-btn-join" bindtap="home" >
+        立即参加
+    </cover-view>
+    </web-view>
+
+
+</view>

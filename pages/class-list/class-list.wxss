@@ -1,0 +1,46 @@
+/* pages/class-list/class-list.wxss */
+.t-cell__title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.classList{
+    display: flex;
+    justify-content: space-between;
+    padding: 28rpx;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    align-items: center;
+    position:relative;
+}
+.class-img{
+    width: 80rpx;
+    height: 80rpx;
+    margin-right: 24rpx
+}
+.class-title{
+    width: 90%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 30rpx;
+        padding-right: 6rpx;
+}
+.schedule{
+    font-size: 26rpx;
+    z-index: 2;
+    display: block;
+    color: rgba(0,0,0,.5);
+    position: relative;
+    /* width: 380rpx; */
+    white-space: nowrap;
+}
+.progress-bar{
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: rgba(121, 204, 202, 0.1);
+    
+}

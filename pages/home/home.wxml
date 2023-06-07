@@ -1,0 +1,21 @@
+<view class="main">
+            <t-tabs sticky swipeable space-evenly="{{false}}" defaultValue="{{type}}" bind:change="onTabsChange" t-class="custom-tabs">
+                <t-tab-panel wx:key="index" wx:for-item="item" label="{{item.typeName}}" value="{{item.id}}" wx:for="{{tabs}}">
+                    <view class="class">
+                        <view  class="class-box" wx:key="index" wx:for-item="class" wx:for-index="index" wx:for="{{classObj[type].targetLists}}" >
+                            <t-cell title="{{class}}" data-pid="{{classObj[type].tarLists[index]}}" data-subjectId="{{item.id}}"  data-title="{{class}}" bindtap="jump" hover note="课程列表" arrow />
+                            <view class="class-info">
+                                <view class="class-title">课程简介
+                   
+                                    <view wx:if="{{index== current && controller}}" class="class-btn" bindtap="showController" data-status="{{false}}" data-index="{{index}}"> 收起
+                                    </view>
+                                </view>
+                                <view wx:if="{{index != current || !controller}}" class="class-btn" bindtap="showController" data-status="{{true}}" data-index="{{index}}"> 折叠
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </t-tab-panel>
+            </t-tabs>
+
+</view>

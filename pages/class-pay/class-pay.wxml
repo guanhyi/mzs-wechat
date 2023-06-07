@@ -1,0 +1,110 @@
+<view>
+    <image class="video-bg-img" src="{{picError ? picErrorUrl : video['videoDetail']['topicImg']}}" :style="{ height: videoPlayHeight + 'px' }" binderror="picerror" mode="aspectFill"></image>
+    <view class="item">
+        <view wx:if="{{video.videoDetail.unitPrice != 0 && buyif == false && video.watch == false}}" class="price">
+            {{video.videoDetail.unitPrice}}
+        </view>
+        <view class="title">
+            <view class="className">{{ video['videoDetail']['className'] }}</view>
+            <view class="name">{{ video['videoDetail']['title'] }}</view>
+        </view>
+        <view class="startToOffTime">教材时间：{{ video['videoDetail']['createTime'] }} 至 {{ video['videoDetail']['offTime'] }}</view>
+    </view>
+    <view class="item">
+        <view class="sm-title">本教材简介</view>
+        <view class="descriptionInfo">{{ video['videoDetail']['description'] }}</view>
+    </view>
+    <view class="item" wx:if="{{groups.length}}">
+        <view class="ping-item">
+            <view class="title-s">{{groups.length}}人在拼单，可直接参与</view>
+            <text class="group-more" wx:if="{{groups.length > 2}}" bindtap="moreGroupShow">查看更多>></text>
+        </view>
+        <view class="group-warrper">
+            <view class="group-list dur" style="margin-top:{{marginTop+'rpx'}}">
+                <block wx:if="{{groups&&groups.length>0}}">
+                    <view class="group-item" wx:for="{{groups}}" wx:key="index">
+                        <view class="item-g-l">
+                            <image class="item-icon-l" wx:if="{{item.headUrl == 'kerkr999'}}" src="../../assets/image/grid-icon-5.png" mode=""></image>
+                            <image class="item-icon-l" wx:if="{{item.headUrl != 'kerkr999'}}" src="{{item.headUrl}}"></image>
+                            <view class="item-title-g">{{item.userName}}</view>
+                        </view>
+                        <view class="item-g-r">
+                            <view class="g-r-text">
+                                <view class="grouping-box">
+                                    <text>还差</text><text class="person-num">{{item.count}}人</text><text>拼成</text>
+                                </view>
+                                <Time wx:if="{{item.expireTime}}" time-label="{{item.expireTime}}"></Time>
+                            </view>
+                            <view class="g-r-btn" bindtap="joinGroupBuy" data-id="{{item.id}}" data-peopleLimit="{{item.peopleLimit}}">
+                                去拼单
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </view>
+        </view>
+    </view>
+    <view class="item">
+        <view class="sm-title">系列教材信息</view>
+        <view class="descriptionInfo videoInfo">
+            <view>系列教材：{{ videoInfo.typeName || '' }}</view>
+            <view>系列价格：¥{{ videoInfo.seriesPrice || '' }}</view>
+            <view>
+                <text>{{ videoInfo.typeInfo || '' }}</text>
+            </view>
+        </view>
+    </view>
+    <view wx:if="{{!isPinning}}" class="canplay-box" :style="{ bottom: safeHeight + 'px' }">
+        <view bindtap="buyCheck" data-index="{{0}}" class="buy-item">
+            <text class="buy-price" wx:if="{{video}}">¥{{ video['videoDetail']['unitPrice'] }}</text>
+            <text>{{buyCheckText0}}</text>
+        </view>
+        <view bindtap="buyCheck" data-index="{{1}}" class="buy-item">
+            <text class="buy-price" v-if="seriesVideoInfo">¥{{ videoInfo['seriesPrice'] }}</text>
+            <text>购买本系列</text>
+        </view>
+        <view bindtap="buyCheck" data-index="{{2}}" wx:if="{{video['isPin']}}" class="buy-item">
+            <text class="buy-price">最低¥{{ pPrice }}</text>
+            <text>团购本系列</text>
+        </view>
+    </view>
+    <view wx:else class="canplay-box" :style="{ bottom: safeHeight + 'px' }" bindtap="goPing" data-index="{{0}}">
+        <view  class="buy-item">
+            <text>拼团中 点击前往</text>
+        </view>
+    </view>
+
+    <t-picker visible="{{discountVisible}}"  value="{{[discountValue]}}" data-key="discount" title="选择参团" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange">
+        <t-picker-item options="{{discountList}}"></t-picker-item>
+    </t-picker>
+
+    <t-popup visible="{{pinVisible}}" bind:visible-change="onVisibleChange" placement="center" class="popup-group">
+        <view class="popup-g-box">
+            <view class="popup-close" bindtap="moreGroupClose">
+                <image src="../../assets/image/close.png"></image>
+            </view>
+            <view class="group-titles">
+                正在拼团
+            </view>
+            <view class="popup-list">
+                <view class="lists-group">
+                    <view class="group-items" wx:for="{{groups}}" wx:key="index">
+                        <view class="g-items-l">
+                            <image class="grid-icon" wx:if="{{item.headUrl == 'kerkr999' || item.headUrl}}" src="../../assets/image/grid-icon-2.png"></image>
+                            <image class="grid-icon" wx:else src="{{item.headUrl}}" mode=""></image>
+                            <view class="g-itme-s">
+                                <text class="user-name">{{item.userName}}</text>
+                                <Time wx:if="{{item.expireTime}}" time-label="{{item.expireTime}}"></Time>
+                            </view>
+                        </view>
+                        <view class="g-items-r">
+                            <view class="item-btn-ok" bindtap="joinGroupBuy" data-id="{{item.id}}" data-index="3">
+                                去拼单
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </t-popup>
+</view>

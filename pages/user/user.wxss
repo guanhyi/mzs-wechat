@@ -1,0 +1,31 @@
+.avater{
+    box-sizing: border-box;
+    background-color: #5acfcb;
+    color: #ffffff;
+    height: auto;
+    padding:32rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.avater image{
+    height: 100rpx;
+    width: 100rpx;
+    border-radius: 50px;
+    will-change: transform;
+}
+.avater-info{
+    margin-left: 20rpx;
+    
+}
+.kekeId{
+    font-size: 24rpx;
+}
+.t-cell{
+    border-bottom: 2rpx solid rgba(0,0,0,.1);
+}
+.t-cell__left image{
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 20rpx;
+}

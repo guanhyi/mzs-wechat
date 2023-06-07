@@ -1,0 +1,37 @@
+<view class="login">
+    <image class="login-image" src="../../assets/image/login-bg.png" mode="widthFix" />
+    <view class="btn-group">
+        <button class="btn" block bindtap="loginWx">微信一键登录</button>
+        <!-- <button class="btn" block bindtap="loginUser">账号密码登录</button> -->
+    </view>
+    <view class="agreement">
+        <checkbox bindtap="changeCheck" checked="{{checkbox}}" />
+        <view class="agreement-text">
+            我已阅读并同意
+            <text class="agree-green" bindtap="goUser">《用户协议》</text>和
+            <text class="agree-green" bindtap="goPrivacy">《隐私协议》</text>
+        </view>
+    </view>
+
+    <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="center">
+        <view class="phone-popup">
+            <view>
+                尊敬的用户，为了向您提供更优质的服务,需要获取您的手机号进行注册,您需要点击授权手机号已表示同意进行获取手机号注册
+            </view>
+            <button open-type="getPhoneNumber" class="btn phone-btn" bindchooseavatar="getAvatar" bindgetphonenumber="getPhone">授权手机号注册</button>
+        </view>
+    </t-popup>
+
+    <t-popup visible="{{visibleAvatar}}" bind:visible-change="onVisibleAvatarChange" placement="center">
+        <view class="phone-popup">
+            <view class="info">
+                <view class="info-avater">
+                    <image src="{{avatar}}" mode="widthFix" />
+                    <button open-type="chooseAvatar" class="phone-btn" size="mini" bindchooseavatar="getAvatar">选择头像</button>
+                </view>
+                <input type="nickname" placeholder="请输入昵称" model:value="{{nickname}}"  />
+                <button class="btn subimt-btn" bindtap="submit">确定</button>
+            </view>
+        </view>
+    </t-popup>
+</view>

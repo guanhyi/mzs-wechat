@@ -1,0 +1,4 @@
+<view>
+    <t-input bindchange="getUsername" class="input" label="" value="{{username}}" placeholder="昵称"></t-input>
+    <button class="btn  mt-20rpx" block bindtap="save">保存</button>
+</view>

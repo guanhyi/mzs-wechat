@@ -1,0 +1,3 @@
+<view class="timer-box">
+		还剩 <text>{{time}}</text>
+	</view>

@@ -1,0 +1,8 @@
+.about image{
+    width: 150rpx;
+    height: 150rpx;
+}
+.about-header{
+    margin-top: 42rpx;
+    text-align: center;
+}

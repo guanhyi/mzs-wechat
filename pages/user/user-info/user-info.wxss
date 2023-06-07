@@ -1,0 +1,11 @@
+.avater{
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 32rpx;
+}
+.avater image{
+    height: 100rpx;
+    width: 100rpx;
+    border-radius: 50px;
+    will-change: transform;
+}

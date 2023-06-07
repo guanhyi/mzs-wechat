@@ -1,0 +1,37 @@
+<wxs module="text">
+    var showText = function (item) {
+        if (+item['ifFinish'] == 1) {
+            return '拼团成功';
+        } else if (+item['ifRefund'] == 1) {
+            return '已退款';
+        } else if (+item['ifRefund'] == 2) {
+            return '退款中，可能会出现延迟到账情况';
+        } else if (item['isFull']) {
+            return '已满员';
+        } else if (item['isExpiration']) {
+            return '已结束';
+        } else {
+            return '拼团中';
+        }
+    }
+    module.exports.showText = showText;
+</wxs>
+
+
+<view class="assemble">
+    <view class="list" wx:if="{{list.length > 0}}">
+        <view class="item" bindtap="share" data-url="{{item.pinUrl}}" wx:key="index" wx:for="{{list}}">
+            <view bindtap="toDetail" class="assemble-detail">
+                <view class="title p">{{ item.typeName }}</view>
+                <view class="t1 p">{{item.showTimeText}}</view>
+                <image wx:for="{{item.headUrl}}" wx:for-item="jtem" wx:key="index" src="{{jtem.headUrl}}" mode="aspectFill"></image>
+                <view class="tk">
+                    <text class="t0 p">{{ text.showText(item) }}</text>
+                    <view class="tk-btn" wx:if="{{ (text.showText(item) == '拼团中' || text.showText(item) == '已结束') && item.isShowTK }}"  data-id="{{item.id}}" bindtap="tuikuanButn">退款</view>
+
+                </view>
+            </view>
+        </view>
+    </view>
+    <view wx:else class="no-reply">暂无拼团</view>
+</view>

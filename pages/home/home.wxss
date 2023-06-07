@@ -1,0 +1,57 @@
+page {
+    background-color: #f6f6f6;
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+.t-tabs{
+    height: 100%;
+}
+.t-tabs__item--active {
+    color: #5acfcb !important;
+}
+
+.t-tabs__track--top,
+.t-tabs__track--bottom {
+    background-color: #5acfcb !important;
+}
+.t-tabs__content{
+    height: 100%;
+background-color: #f6f6f6;
+}
+.class-box {
+    border-radius: 24rpx;
+    background: #fff;
+    box-shadow: 4rpx 4rpx 14rpx rgba(0, 0, 0, 0.03), -4rpx 0 14rpx rgba(0, 0, 0, 0.03);
+    overflow: honeydew;
+    margin: 20rpx;
+}
+
+.class-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 32rpx;
+    font-size: 24rpx;
+}
+
+.class-detail {
+    font-size: 28rpx;
+    color: #999;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+    display: block;
+}
+
+.class-title {
+    width: 100%;
+}
+
+.class-btn {
+    width: 50rpx;
+    text-align: right;
+    width: 100%;
+}

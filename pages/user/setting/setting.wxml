@@ -1,0 +1,5 @@
+<view>
+    <t-cell title="关于" class="mt-20rpx" url="../about/about" hover arrow bordered="{{true}}" />
+    <t-cell title="修改密码"  url="../edit-password/edit-password" hover arrow bordered="{{false}}" />
+    <button class="btn mt-20rpx" block bindtap="logout">退出</button>
+</view>

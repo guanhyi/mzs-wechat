@@ -1,0 +1,76 @@
+<view class="share-bg">
+    <view class="share-sub">
+        超划算的，快来和我一起拼团吧！
+    </view>
+    <view class="share-box">
+        <view>
+            {{info.typeName}}-{{info.typeInfo}}
+        </view>
+        <view class="mt-20rpx">
+            <text class="share-price">￥{{info.seriesPrice}}</text>
+            <text class="share-realPrice">￥ {{info.realPrice}}</text>
+        </view>
+        <view class="mt-20rpx">
+            <text class="share-time">限时抢购</text>
+        </view>
+    </view>
+    <view class="share-people">
+        <view class="share-avaterList">
+            <image wx:for="{{info.headUrl}}" wx:key="index" src="{{item.headUrl}}"></image>
+            <view class="share-next" wx:if="{{info.headUrl.length < info.peopleLimit}}">
+                ?
+            </view>
+        </view>
+        <view class="mt-20rpx" wx:if="{{info.videoCount < info.peopleLimit && time>0}}">
+            仅剩
+            <text class="share-videoCount">{{info.peopleLimit - info.headUrl.length}}</text>
+            人，快呼唤小伙伴参加吧！
+        </view>
+        <view class="share-downtime">
+
+            <view class="share-ht">
+            </view>
+            <view wx:if="{{time>0 || info.peopleLimit === info.headUrl.length}}" class="share-downtime-time">
+                剩余 <t-count-down content="default" time="{{ time }}" theme="square"> </t-count-down>结束
+            </view>
+            <view wx:else style="color: red;">
+                拼团已结束
+            </view>
+            <view class="share-ht">
+            </view>
+        </view>
+
+    </view>
+    <view class="share-context">
+        <view class="share-cell">
+            <text>拼团须知</text>
+            <text class="share-cell-value">好友拼团-人满开抢</text>
+        </view>
+        <view class="share-cell">
+            <text> 拼团须知玩法</text>
+            <text class="share-cell-value">{{info.peopleLimit}}人参团</text>
+        </view>
+        <view class="share-btns">
+            <button class="share-btn" block bindtap="home">立即参加</button>
+            <button class="share-btn" block open-type="share">转发</button>
+        </view>
+        <view class="share-footer">
+            <view class="share-footer-icon">
+                <t-icon name="folder" size="48rpx" />
+                选择心怡的课程
+            </view>
+            <view class="share-footer-icon">
+                <t-icon name="creditcard" size="48rpx" />
+                邀请好友参加
+            </view>
+            <view class="share-footer-icon">
+                <t-icon name="usergroup" size="48rpx" />
+                达到人数拼团成功
+            </view>
+            <view class="share-footer-icon">
+                <t-icon name="caret-right" size="48rpx" />
+                进入小程序购买
+            </view>
+        </view>
+    </view>
+</view>

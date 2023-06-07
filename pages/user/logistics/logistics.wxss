@@ -1,0 +1,10 @@
+.box{
+    margin: 32rpx;
+    background-color: #fff;
+    border-radius: 18rpx;
+    padding: 32rpx;
+}
+.box .flex{
+    justify-content: space-between;
+    align-items: center;
+}

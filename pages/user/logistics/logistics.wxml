@@ -1,0 +1,25 @@
+<view>
+    <block wx:if="{{list && list.length}}">
+        <view wx:for="{{list}}" wx:key="index" class="box">
+            <view class="flex">
+                <view>
+                    订单名称
+                </view>
+                <view>
+                    {{item.title}}
+                </view>
+            </view>
+            <view class="flex mt-20rpx">
+            <view>
+                快递单号：
+            </view>
+            <view>
+                {{item.logisticsNo}}
+                
+            </view>
+            </view>
+        </view>
+
+    </block>
+    <view wx:else class="no-reply">暂无信息</view>
+</view>
