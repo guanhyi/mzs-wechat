@@ -5,23 +5,21 @@ Page({
      * 页面的初始数据
      */
     data: {
-        info:{}
+        info: {},
+        userInfo:{}
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        classService.showInAppPin().then(res => {
+        classService.goIndexPin(options.id).then(res => {
             if (res.data.code == 1000) {
-                const data = res.data.myPinList.filter((it) =>it.id==options.id)
                 this.setData({
-                    info: data[0],
-                    time:new Date(data[0].expirationTime).getTime()-new Date().getTime()
-                })
-            } else {
-                wx.showToast({
-                    title: '加载失败',
+                    id:options.id,
+                    info: res.data.pinInfo,
+                    time: new Date(res.data.pinInfo.expirationTime).getTime() - new Date().getTime(),
+                    userInfo:res.data.userInfo
                 })
             }
         })
@@ -73,11 +71,19 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage() {
-
+        return {
+            path:'pages/share/share?id='+this.data.id,
+            title: '三到九年级理科',
+            imageUrl: "/assets/image/share.png", //自定义图片的地址
+            success(res) {
+                console.log('分享成功！')
+            }
+        }
     },
-    home(){
+    home() {
+        const {info,id} = this.data
         wx.reLaunch({
-          url: '../../home/home',
+            url: `/pages/login/login?to=pages/class-pay/class-pay&sid=${info.sid}&id=${id}&subjectId=${info.pid}&peoplelimit=${info.peopleLimit}&price=${info.seriesPrice}`,
         })
     }
 })

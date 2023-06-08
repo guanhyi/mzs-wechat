@@ -284,7 +284,7 @@ Page({
                 package: 'prepay_id=' + res.data.prepayid,
                 paySign: res.data.sign,
                 signType: 'MD5',
-                success: (res) => {
+                success: () => {
                     wx.showToast({
                         title: '购买成功',
                     })
@@ -327,7 +327,7 @@ Page({
                 package: 'prepay_id=' + res.data.prepayid,
                 paySign: res.data.sign,
                 signType: 'MD5',
-                success: (res) => {
+                success: () => {
                     wx.showToast({
                         title: '购买成功',
                     })

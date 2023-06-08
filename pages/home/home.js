@@ -1,11 +1,12 @@
-const classService = require("../../service/class") //引入课表的接口js
+const classService = require("../../service/class"); //引入课表的接口js
+const app = getApp()
 Page({
     data: {
         tabs: [],
         classObj: {},
         type: 2,
-        controller:false,
-        current:-1
+        controller: false,
+        current: -1
     },
     onLoad(options) {
         classService.getType({
@@ -44,22 +45,30 @@ Page({
     onTabsChange(e) {
         this.setData({
             type: e.detail.value,
-            current :-1
+            current: -1
         })
     },
     /**
      * 是否显示全部控制器
      */
-    showController(e){
+    showController(e) {
         this.setData({
-            controller:e.target.dataset.status,
-            current : e.target.dataset.index
+            controller: e.target.dataset.status,
+            current: e.target.dataset.index
         })
     },
-    jump(e){
-        const {pid,subjectid,title} = e.currentTarget.dataset
-        wx.navigateTo({
-          url: `../class-list/class-list?pid=${pid}&subjectId=${subjectid}&title=${title}`,
+    jump(e) {
+        app.isLogin().then(res => {
+            const {
+                pid,
+                subjectid,
+                title
+            } = e.currentTarget.dataset
+            wx.navigateTo({
+                url: `../class-list/class-list?pid=${pid}&subjectId=${subjectid}&title=${title}`,
+            })
+        }).catch(() => {
+            console.log(3)
         })
     }
 });

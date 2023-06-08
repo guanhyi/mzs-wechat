@@ -98,7 +98,7 @@
                             </view>
                         </view>
                         <view class="g-items-r">
-                            <view class="item-btn-ok" bindtap="joinGroupBuy" data-id="{{item.id}}" data-index="3">
+                            <view class="item-btn-ok" bindtap="joinGroupBuy" data-id="{{item.id}}" data-index="3" data-peopleLimit="{{item.peopleLimit}}">
                                 去拼单
                             </view>
                         </view>

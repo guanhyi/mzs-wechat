@@ -3,34 +3,40 @@
         超划算的，快来和我一起拼团吧！
     </view>
     <view class="share-box">
+        <image src="{{info.topicImg}}" alt="" />
         <view>
-            {{info.typeName}}-{{info.typeInfo}}
-        </view>
-        <view class="mt-20rpx">
-            <text class="share-price">￥{{info.seriesPrice}}</text>
-            <text class="share-realPrice">￥ {{info.realPrice}}</text>
-        </view>
-        <view class="mt-20rpx">
-            <text class="share-time">限时抢购</text>
+            <view>
+                {{info.typeName}}-{{info.typeInfo}}
+            </view>
+            <view class="mt-60rpx">
+                <text class="share-price">￥{{info.seriesPrice}}</text>
+                <text class="share-realPrice">￥ {{info.realPrice}}</text>
+            </view>
+            <view class="mt-20rpx label">
+                <text class="share-time">限时抢购</text>
+            </view>
         </view>
     </view>
     <view class="share-people">
         <view class="share-avaterList">
-            <image wx:for="{{info.headUrl}}" wx:key="index" src="{{item.headUrl}}"></image>
-            <view class="share-next" wx:if="{{info.headUrl.length < info.peopleLimit}}">
+        <image src="{{info.headUrl}}" mode=""/>
+            <image wx:for="{{userInfo}}" wx:key="index" src="{{item.headUrl}}"></image>
+            <view class="share-next" wx:if="{{info.count < info.peopleLimit}}">
                 ?
             </view>
         </view>
-        <view class="mt-20rpx" wx:if="{{info.videoCount < info.peopleLimit && time>0}}">
+        <view class="mt-20rpx" wx:if="{{info.count < info.peopleLimit }}">
             仅剩
-            <text class="share-videoCount">{{info.peopleLimit - info.headUrl.length}}</text>
+            <text class="share-videoCount">{{info.peopleLimit - info.count}}</text>
             人，快呼唤小伙伴参加吧！
         </view>
+        <view wx:if="">
+            拼团已满
+        </view>
         <view class="share-downtime">
-
             <view class="share-ht">
             </view>
-            <view wx:if="{{time>0 || info.peopleLimit === info.headUrl.length}}" class="share-downtime-time">
+            <view wx:if="{{time>0 && info.peopleLimit != info.count}}" class="share-downtime-time">
                 剩余 <t-count-down content="default" time="{{ time }}" theme="square"> </t-count-down>结束
             </view>
             <view wx:else style="color: red;">
@@ -39,8 +45,18 @@
             <view class="share-ht">
             </view>
         </view>
-
+        <view class="userInfo">
+            <view class="flex">
+                <image src="{{info.headUrl}}" mode="" />
+                <view>{{info.headerName}}</view>
+            </view>
+            <view class="flex">
+                <view>{{info.createTime}}</view>
+                <view class="k">开团</view>
+            </view>
+        </view>
     </view>
+
     <view class="share-context">
         <view class="share-cell">
             <text>拼团须知</text>

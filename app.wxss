@@ -53,3 +53,6 @@ page {
 .mt-20rpx{
     margin-top: 20rpx
 }
+.mt-60rpx{
+    margin-top: 60rpx;
+}

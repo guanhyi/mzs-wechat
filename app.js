@@ -13,18 +13,22 @@ App({
             }
         })
 
-        if (!wx.getStorageSync('userInfo')) {
-            wx.redirectTo({
-                url: './pages/login/login',
-            })
-        } else {
-            userSerivce.getUser().then(res => {
-                wx.setStorageSync('userInfo', {
-                    ...wx.getStorageSync('userInfo'),
-                    ...res.data
-                })
-            })
-        }
+        // if (!wx.getStorageSync('userInfo')) {
+        //     wx.redirectTo({
+        //         url: './pages/login/login',
+        //     })
+        // } else {
+        //     userSerivce.getUser().then(res => {
+        //         wx.setStorageSync('userInfo', {
+        //             ...wx.getStorageSync('userInfo'),
+        //             ...res.data
+        //         })
+        //     }).catch(()=>{
+        //         wx.redirectTo({
+        //             url: './pages/login/login',
+        //         })
+        //     })
+        // }
 
         // userSerivce.getCode()
     },
@@ -73,5 +77,44 @@ App({
                 console.log('分享成功！')
             }
         }
+    },
+    isLogin() {
+        return new Promise((resolve, reject) => {
+            if (!wx.getStorageSync('userInfo')) {
+                wx.showToast({
+                    title: '请先登录！',
+                    icon: 'error'
+                })
+                setTimeout(() => {
+                    reject()
+
+                    wx.redirectTo({
+                        url: '/pages/login/login',
+                    })
+                }, 500);
+
+            } else {
+                userSerivce.getUser().then(res => {
+                    wx.setStorageSync('userInfo', {
+                        ...wx.getStorageSync('userInfo'),
+                        ...res.data
+                    })
+                    resolve(res)
+
+                }).catch(() => {
+                    wx.showToast({
+                        title: '请先登录！',
+                    })
+                    setTimeout(() => {
+                        reject()
+
+                        wx.redirectTo({
+                            url: '/pages/login/login',
+                        })
+                    }, 500);
+                })
+            }
+        })
+
     }
 });

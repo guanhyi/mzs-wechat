@@ -1,5 +1,6 @@
 const userService = require('../../service/user')
 const loginService = require('../../service/login')
+const classService = require('../../service/class')
 const app = getApp()
 Page({
 
@@ -8,18 +9,32 @@ Page({
      */
     data: {
         checkbox: false,
-        visible: true,
+        visible: false,
         visibleAvatar: false,
         phone: '',
-        avatar:'../../assets/image/my.png',
-        nickname:''
+        avatar: '../../assets/image/my.png',
+        nickname: '',
+        to: '',
+        groupId: '',
+        sid: '',
+        subjectId: '',
+        peoplelimit: '',
+        price: ''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad() {
-        
+    onLoad(options) {
+        console.log(options);
+        this.setData({
+            to: options.to,
+            sid: options.sid,
+            groupId: options.id,
+            subjectId: options.subjectId,
+            price: options.price,
+            peoplelimit: options.peoplelimit
+        })
     },
     /**
      * 账号密码登录
@@ -43,11 +58,16 @@ Page({
                             this.setData({
                                 visible: true
                             })
-                        } else if(r.data.code === '1000'){
+                        } else if (r.data.code === '1000') {
                             wx.setStorageSync('userInfo', r.data)
-                            wx.switchTab({
-                                url: '../home/home',
-                            })
+                            if (this.data.to) {
+                                this.reTo()
+                            } else {
+                                wx.switchTab({
+                                    url: '../home/home',
+                                })
+                            }
+
                         }
                     })
                 },
@@ -113,33 +133,33 @@ Page({
             avatarUrl
         } = e.detail
         this.setData({
-            avatar:avatarUrl
+            avatar: avatarUrl
         })
-     
-    },
-    submit(){
- 
 
-   wx.login({
+    },
+    submit() {
+
+
+        wx.login({
             success: (res) => {
                 loginService.weixinRegist({
                     wxCode: res.code,
-                    phoneNumber:this.data.phone,
-                    password:123456,
+                    phoneNumber: this.data.phone,
+                    password: 123456,
                     userId: this.data.phone,
                     nickName: this.data.nickname,
                     headUrl: this.data.avatar,
                     grade: '其他',
                     deviceType: app.globalData.systemInfo.system.indexOf('iOS') > -1 ? 1 : 0,
                 }).then(re => {
-                    if(re.data.code == 1000){
-                   this.loginWx()
-                    }else{
+                    if (re.data.code == 1000) {
+                        this.loginWx()
+                    } else {
                         wx.showToast({
-                          title: '注册失败，请联系管理员',
+                            title: '注册失败，请联系管理员',
                         })
                     }
-                 
+
                 })
             },
         })
@@ -163,4 +183,29 @@ Page({
             }
         }
     },
+    /**
+     * 如果是分享页面进来的 先判断是否已经参团该系列 有的话跳到首页没有跳到课程页面
+     */
+    reTo() {
+        console.log(this.data.peoplelimit);
+        classService.getClassDetail(this.data.subjectId, this.data.sid).then(res => {
+            classService.getVideo(res.data.videoList[0].id, res.data.videoList[0].videoCode).then(re => {
+                if (re.data.isPinning) {
+                    wx.showModal({
+                        title: '您已经参与了该系列拼团！请勿重复拼团！',
+                        success() {
+                            wx.reLaunch({
+                                url: '/pages/home/home',
+                            })
+                        }
+                    })
+                } else {
+                    wx.reLaunch({
+                        url: `/pages/class-pay/pay/pay?title=团购本系列教材&price=${this.data.price}&videoCode=${res.data.videoList[0].videoCode}&pid=${this.data.sid}&type=3&status=${this.data.peoplelimit}&createTime=${re.data.endTime}&count=${re.data.discount}&groupId=${this.data.groupId}`,
+                    })
+                }
+            })
+        })
+        // classService.getVideo()
+    }
 })

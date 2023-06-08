@@ -74,7 +74,7 @@
         },
         // 拼团详情
         goIndexPin(id){
-            return request.get('/goIndexPin.jspx?', {
+            return request.get('/pingtuanInfoPin.jspx?', {
                 id,
             }, true)
         }

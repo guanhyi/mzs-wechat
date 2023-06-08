@@ -18,8 +18,16 @@
     margin: 0 30rpx;
     border-radius: 10rpx;
     margin-top: 20rpx;
+    display: flex;
 }
-
+.share-box image{
+    width: 250rpx;
+    height:250rpx;
+    margin-right: 40rpx;
+}
+.label{
+    overflow: initial;
+}
 .share-price {
     color: red;
     font-size: 40rpx;
@@ -69,9 +77,7 @@
     margin: 0 20rpx;
 }
 .share-videoCount{
-
     color: #F87387;
-
 }
 
 .share-downtime{
@@ -83,7 +89,6 @@
     display: flex;
 }
 .share-downtime .t-count-down{
-    
     margin: 0 20rpx;
 }
 .share-ht{
@@ -92,7 +97,25 @@
     background: #e6e6e6;
     margin:0 20rpx;
 }
-
+.userInfo{
+     display: flex;
+     justify-content: space-between;
+     font-size: 26rpx;
+     align-items: center;
+     width: 100%;
+}
+.userInfo image{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    margin: 0 20rpx;
+}
+.userInfo .k{
+  margin-left: 20rpx;
+}
+.userInfo .flex{
+    align-items: center;
+}
 .share-context{
     margin-top: 30rpx;
     background: white;
@@ -129,5 +152,6 @@
     width: 22%;
 }
 .share-footer-icon .t-icon{
-    color:#F87387
+    color:#F87387;
+    margin-right: 10rpx;
 }

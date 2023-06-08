@@ -1,5 +1,5 @@
 <view class="main">
-    <view class="avater" bindtap="jump">
+    <view class="avater" bindtap="jump" wx:if="{{user}}">
         <view class="flex item-center">
             <image src="{{user.headUrl?user.headUrl:'../../assets/image/pic_160.png'}}" />
             <view class="avater-info">
@@ -13,11 +13,13 @@
         </view>
         <t-icon name="chevron-right" size="48rpx" />
     </view>
+    <view class="avater" wx:else bindtap="login">
+        立即登录 </view>
     <view>
 
-        <t-cell title="客服电话"   image="/assets/image/kefu.png" hover arrow bordered="{{false}}"  bindtap="call" />
-        <t-cell title="物流信息"  url="./logistics/logistics" image="/assets/image/logisticsche.png" hover arrow bordered="{{false}}" />
-        <t-cell title="我的拼团"  url="../class-pay/assemble/assemble" image="/assets/image/grid-icon-1.png" hover arrow bordered="{{false}}" />
-        <t-cell title="设置" class="mt-20rpx"  bordered image="/assets/image/setting.png" url="./setting/setting" hover arrow bordered="{{false}}" />
+        <t-cell title="客服电话" image="/assets/image/kefu.png" hover arrow bordered="{{false}}" bindtap="call" />
+        <!-- <t-cell title="物流信息"  url="./logistics/logistics" image="/assets/image/logisticsche.png" hover arrow bordered="{{false}}" /> -->
+        <t-cell title="我的拼团" url="../class-pay/assemble/assemble" image="/assets/image/grid-icon-1.png" hover arrow bordered="{{false}}" />
+        <t-cell title="设置" class="mt-20rpx" bordered image="/assets/image/setting.png" url="./setting/setting" hover arrow bordered="{{false}}" />
     </view>
 </view>

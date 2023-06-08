@@ -6,7 +6,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        mobile: '15706809376',
+        mobile: '',
         password: '',
         code: '',
         text: '获取验证码',

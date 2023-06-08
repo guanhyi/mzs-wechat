@@ -119,11 +119,9 @@ Page({
      */
     share(e){
         const _url = e.currentTarget.dataset.url.split('?id=')
-        const url = _url[0]
         const id = _url[1]
-        console.log(url);
         wx.navigateTo({
-          url: `../share-viewWeb/share-viewWeb?id=${id}&url=${url}`,
+          url: `../share/share?id=${id}`,
         })
     },
     onShareAppMessage() {

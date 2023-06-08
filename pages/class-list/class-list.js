@@ -1,4 +1,5 @@
 const classService = require("../../service/class") //引入课程的接口js
+const app = getApp()
 Page({
 
     /**
@@ -6,24 +7,30 @@ Page({
      */
     data: {
         list: [],
-        pid:'',
-        subjectId:''
+        pid: '',
+        subjectId: ''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        let pid = options?.pid ? options.pid : 0
-        let subjectId = options?.subjectId ? options.subjectId : 0
-        let title = options?.title ? options.title : '课程'
-        this.setData({
-            subjectId: subjectId,
-            pid:pid
-        })
-        wx.setNavigationBarTitle({
-            title: title,
-          })
+
+
+            
+            let pid = options?.pid ? options.pid : 0
+            let subjectId = options?.subjectId ? options.subjectId : 0
+            let title = options?.title ? options.title : '课程'
+            this.setData({
+                subjectId: subjectId,
+                pid: pid
+            })
+            wx.setNavigationBarTitle({
+                title: title,
+            })
+
+
+
     },
 
     /**
@@ -37,15 +44,16 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-        classService.getClassDetail(this.data.subjectId,this.data.pid).then(res => {
+        classService.getClassDetail(this.data.subjectId, this.data.pid).then(res => {
             const data = res.data.videoList.filter(item => {
                 return item.pid == this.data.pid && item.subjectId == this.data.subjectId && item.title.indexOf('仅支持安卓设备') < 0
             })
             this.setData({
-                list:data,
+                list: data,
             })
         })
-     
+
+
     },
 
     /**
@@ -111,7 +119,7 @@ Page({
                 wx.navigateTo({
                     url: `../class-detail/class-detail?id=${id}&videocode=${videocode}&buyif=${buyif}&pid=${this.data.pid}`,
                 })
-            }else{
+            } else {
                 wx.navigateTo({
                     url: `../class-pay/class-pay?id=${id}&videocode=${videocode}&buyif=${buyif}&pid=${this.data.pid}`,
                 })

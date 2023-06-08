@@ -109,7 +109,21 @@
                 {
                     "name": "分享",
                     "pathName": "pages/class-pay/share/share",
-                    "query": "id=2305311034336880000",
+                    "query": "id=2306081552224230000",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "分享支付",
+                    "pathName": "pages/login/login",
+                    "query": "to=pages%2Fclass-pay%2Fclass-pay&sid=483&id=2306082028590290000&subjectId=1",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "22",
+                    "pathName": "pages/login/login",
+                    "query": "to=pages%2Fclass-pay%2Fclass-pay&sid=483&id=2306082028590290000&subjectId=1&peoplelimit=undefined&price=0.02",
                     "launchMode": "default",
                     "scene": null
                 }

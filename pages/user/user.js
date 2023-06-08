@@ -1,18 +1,20 @@
 // pages/user/user.js
+const app = getApp()
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        user:{}
+        user: {},
+
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        
+
     },
 
     /**
@@ -27,7 +29,7 @@ Page({
      */
     onShow() {
         this.setData({
-            user:wx.getStorageSync('userInfo')
+            user: wx.getStorageSync('userInfo') || false
         })
     },
 
@@ -40,18 +42,26 @@ Page({
     /**
      * 拨打电话
      */
-    call(){
+    call() {
         wx.makePhoneCall({
-          phoneNumber: '15168022179',
+            phoneNumber: '15168022179',
+        })
+    },
+    login(){
+        wx.redirectTo({
+            url: '/pages/login/login',
         })
     },
     /**
      * 进入个人信息页面
      */
-    jump(){
-        wx.navigateTo({
-          url: './user-info/user-info',
+    jump() {
+        app.isLogin().then(res => {
+            wx.navigateTo({
+                url: './user-info/user-info',
+            })
         })
+
     },
     onShareAppMessage() {
         return {
