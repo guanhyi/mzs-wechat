@@ -11,15 +11,15 @@ Page({
         visible: false,
         visibleAvatar: false,
         phone: '',
-        avatar:'../../assets/image/my.png',
-        nickname:''
+        avatar: '../../assets/image/my.png',
+        nickname: ''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad() {
-        
+
     },
     /**
      * 账号密码登录
@@ -43,7 +43,7 @@ Page({
                             this.setData({
                                 visible: true
                             })
-                        } else if(r.data.code === '1000'){
+                        } else if (r.data.code === '1000') {
                             wx.setStorageSync('userInfo', r.data)
                             wx.switchTab({
                                 url: '../home/home',
@@ -113,31 +113,30 @@ Page({
             avatarUrl
         } = e.detail
         this.setData({
-            avatar:avatarUrl
+            avatar: avatarUrl
         })
-     
     },
-    submit(){
- 
-
-   wx.login({
+    submit() {
+        wx.login({
             success: (res) => {
                 loginService.weixinRegist({
                     wxCode: res.code,
                     userId: this.data.phone,
+                    phoneNumber:this.data.phone,
+                    password:123456,
                     nickName: this.data.nickname,
                     headUrl: this.data.avatar,
                     grade: '其他',
                     deviceType: app.globalData.systemInfo.system.indexOf('iOS') > -1 ? 1 : 0,
                 }).then(re => {
-                    if(re.data.code == 1000){
-                   this.loginWx()
-                    }else{
+                    if (re.data.code == 1000) {
+                        this.loginWx()
+                    } else {
                         wx.showToast({
-                          title: '注册失败，请联系管理员',
+                            title: '注册失败，请联系管理员',
                         })
                     }
-                 
+
                 })
             },
         })
