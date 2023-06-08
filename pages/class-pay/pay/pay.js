@@ -289,10 +289,9 @@ Page({
                         title: '购买成功',
                     })
                     const _url =res.data.pinUrl.split('?id=')
-                    const url = _url[0]
                     const id = _url[1]
                     wx.redirectTo({
-                        url: `../share-viewWeb/share-viewWeb?id=${id}&url=${url}`,
+                        url: `../share/share?id=${id}`,
                       })
                 },
             })
@@ -332,10 +331,9 @@ Page({
                         title: '购买成功',
                     })
                     const _url =res.data.pinUrl.split('?id=')
-                    const url = _url[0]
                     const id = _url[1]
                     wx.redirectTo({
-                        url: `../share-viewWeb/share-viewWeb?id=${id}&url=${url}`,
+                        url: `../share/share?id=${id}`,
                       })
                   
                 },

@@ -83,7 +83,7 @@ Page({
     home() {
         const {info,id} = this.data
         wx.reLaunch({
-            url: `/pages/login/login?to=pages/class-pay/class-pay&sid=${info.sid}&id=${id}&subjectId=${info.pid}&peoplelimit=${info.peopleLimit}&price=${info.seriesPrice}`,
+            url: `/pages/login/login?to=pages/class-pay/class-pay&sid=${info.sid}&id=${id}&subjectId=${info.pid}&peoplelimit=${info.peopleLimit}&price=${info.seriesPrice}&discount=${info.discount}`,
         })
     }
 })

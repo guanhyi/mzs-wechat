@@ -25,7 +25,7 @@ Page({
         groups: [],
         pinVisible: false,
         pid: '',
-        videocode:'',
+        videocode: '',
     },
 
     /**
@@ -34,20 +34,20 @@ Page({
     onLoad(options) {
         const {
             id,
-            videocode ,
+            videocode,
             buyif,
             pid,
         } = options
-        classService.promotConfingPin().then(res=>{
+        classService.promotConfingPin().then(res => {
             this.setData({
-                discountList:res.data.data.map(it=>{
+                discountList: res.data.data.map(it => {
                     return {
                         ...it,
-                        value:it.peopleLimit,
-                        label:`${it.promotName}(${it.discount*10}折)`
+                        value: it.peopleLimit,
+                        label: `${it.promotName}(${it.discount*10}折)`
                     }
                 }),
-                discount:Math.min(...res.data.data.map(it=>it.discount))
+                discount: Math.min(...res.data.data.map(it => it.discount))
             })
 
         })
@@ -55,10 +55,10 @@ Page({
             this.setData({
                 video: res.data,
                 buyif: buyif == 'true' ? true : false,
-                isPinning: res.data.isPinning?res.data.isPinning : false,
+                isPinning: res.data.isPinning ? res.data.isPinning : false,
                 pid: pid,
-                id:id,
-                videocode:videocode
+                id: id,
+                videocode: videocode
             })
             classService.seriesVideoInfoUser(pid).then(r => {
                 let p = r.data.info.seriesPrice
@@ -82,14 +82,14 @@ Page({
             }
 
         })
-      
+
     },
-    onShow(){
-        if(this.data.id){
+    onShow() {
+        if (this.data.id) {
             classService.getVideo(this.data.id, this.data.videocode).then(res => {
                 this.setData({
                     video: res.data,
-                    isPinning: res.data.isPinning?res.data.isPinning : false,
+                    isPinning: res.data.isPinning ? res.data.isPinning : false,
                 })
                 classService.seriesVideoInfoUser(this.data.pid).then(r => {
                     let p = r.data.info.seriesPrice
@@ -111,7 +111,7 @@ Page({
                         this.animationUp()
                     }
                 }
-    
+
             })
         }
     },
@@ -131,12 +131,18 @@ Page({
     },
     joinGroupBuy(e) {
         const {
-            peoplelimit,id
+            peoplelimit,
+            id
         } = e.currentTarget.dataset
-        const {video,pid,videoInfo}= this.data
-        const price = (this.data.discountList.filter(it=>it.peopleLimit == peoplelimit)[0].discountMember * videoInfo.seriesPrice).toFixed(2)
+        const {
+            video,
+            pid,
+            videoInfo
+        } = this.data
+
+        const price = (this.data.discountList.filter(it => it.peopleLimit == peoplelimit)[0].discountMember * videoInfo.seriesPrice).toFixed(2)
         wx.navigateTo({
-            url: `./pay/pay?title=团购本系列教材&price=${price}&videoCode=${video.videoDetail.videoCode}&pid=${pid}&type=3&status=${peoplelimit}&createTime=${video.endTime}&count=${video.discount}&groupId=${id}`,
+            url: `./pay/pay?title=团购本系列教材&price=${price}&videoCode=${video.videoDetail.videoCode}&pid=${pid}&type=3&status=${peoplelimit}&createTime=${video.endTime}&count=${this.data.discountList.filter(it=>it.peopleLimit == peoplelimit)[0].discountMember}&groupId=${id}`,
         })
     },
     // 判断购买的是什么
@@ -160,7 +166,10 @@ Page({
             price = this.data.pPrice;
             return
         }
-    const {pid,buyCheckText0}=this.data
+        const {
+            pid,
+            buyCheckText0
+        } = this.data
         wx.navigateTo({
             url: `./pay/pay?title=${buyCheckText0}&price=${price}&videoCode=${videoCode}&pid=${pid}&type=${type}`,
         })
@@ -171,12 +180,17 @@ Page({
             value
         } = e.detail
         this.setData({
-            discountVisible:false
+            discountVisible: false
         })
-        const {pid,video,discountList,videoInfo}= this.data
-        const pPrice = (discountList.filter(it=>it.peopleLimit == value[0])[0].discount *videoInfo.seriesPrice).toFixed(2)
+        const {
+            pid,
+            video,
+            discountList,
+            videoInfo
+        } = this.data
+        const pPrice = (discountList.filter(it => it.peopleLimit == value[0])[0].discount * videoInfo.seriesPrice).toFixed(2)
         wx.navigateTo({
-            url: `./pay/pay?title=团购本系列&price=${pPrice}&videoCode=${video.videoDetail.videoCode}&pid=${pid}&type=2&status=${value[0]}&createTime=${video.endTime}&count=${video.discount}`,
+            url: `./pay/pay?title=团购本系列&price=${pPrice}&videoCode=${video.videoDetail.videoCode}&pid=${pid}&type=2&status=${value[0]}&createTime=${video.endTime}&count=${discountList.filter(it=>it.peopleLimit == value[0])[0].discount}`,
         })
 
     },

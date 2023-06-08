@@ -19,7 +19,8 @@ Page({
         sid: '',
         subjectId: '',
         peoplelimit: '',
-        price: ''
+        price: '',
+        discount:''
     },
 
     /**
@@ -33,7 +34,8 @@ Page({
             groupId: options.id,
             subjectId: options.subjectId,
             price: options.price,
-            peoplelimit: options.peoplelimit
+            peoplelimit: options.peoplelimit,
+            discount:options.discount
         })
     },
     /**
@@ -187,7 +189,6 @@ Page({
      * 如果是分享页面进来的 先判断是否已经参团该系列 有的话跳到首页没有跳到课程页面
      */
     reTo() {
-        console.log(this.data.peoplelimit);
         classService.getClassDetail(this.data.subjectId, this.data.sid).then(res => {
             classService.getVideo(res.data.videoList[0].id, res.data.videoList[0].videoCode).then(re => {
                 if (re.data.isPinning) {
@@ -201,7 +202,7 @@ Page({
                     })
                 } else {
                     wx.reLaunch({
-                        url: `/pages/class-pay/pay/pay?title=团购本系列教材&price=${this.data.price}&videoCode=${res.data.videoList[0].videoCode}&pid=${this.data.sid}&type=3&status=${this.data.peoplelimit}&createTime=${re.data.endTime}&count=${re.data.discount}&groupId=${this.data.groupId}`,
+                        url: `/pages/class-pay/pay/pay?title=团购本系列教材&price=${this.data.price}&videoCode=${res.data.videoList[0].videoCode}&pid=${this.data.sid}&type=3&status=${this.data.peoplelimit}&createTime=${re.data.endTime}&count=${this.data.discount}&groupId=${this.data.groupId}`,
                     })
                 }
             })
