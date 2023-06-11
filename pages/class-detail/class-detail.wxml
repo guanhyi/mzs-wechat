@@ -1,6 +1,7 @@
 <view>
-    <video class="video"  controls id="video" src="{{video.videoDetail.videoUrl}}" bindtimeupdate="getCurrentTime" bindloadedmetadata="getLength" enable-play-gesture="{{true}}" bindplay="play" bindpause="pause" binderror="error" 	 picture-in-picture-mode="{{['push', 'pop']}}">
+    <video class="video" wx:if="{{video.videoDetail.videoUrl}}" controls id="video" src="{{video.videoDetail.videoUrl}}" bindtimeupdate="getCurrentTime" bindloadedmetadata="getLength" enable-play-gesture="{{true}}" bindplay="play" bindpause="pause" binderror="error" picture-in-picture-mode="{{['push', 'pop']}}">
     </video>
+    <image wx:else class="video-bg-img" src="{{picError ? picErrorUrl : video['videoDetail']['topicImg']}}"  binderror="picerror" mode="aspectFill"></image>
     <view class="item">
         <view wx:if="{{video.videoDetail.unitPrice != 0 && buyif == false && video.watch == false}}">
             {{video.videoDetail.unitPrice}}
@@ -9,7 +10,7 @@
             <view class="className">{{ video['videoDetail']['className'] }}</view>
             <view class="name">{{ video['videoDetail']['title'] }}</view>
         </view>
-        <view class="startToOffTime">教材时间：{{ video['videoDetail']['createTime'] }} 至 {{ video['videoDetail']['offTime'] }}</view>
+        <!-- <view class="startToOffTime">教材时间：{{ video['videoDetail']['createTime'] }} 至 {{ video['videoDetail']['offTime'] }}</view> -->
     </view>
     <view class="item">
         <view class="sm-title">本教材简介</view>

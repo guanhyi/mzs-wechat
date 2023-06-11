@@ -13,27 +13,18 @@ App({
             }
         })
 
-        // if (!wx.getStorageSync('userInfo')) {
-        //     wx.redirectTo({
-        //         url: './pages/login/login',
-        //     })
-        // } else {
-        //     userSerivce.getUser().then(res => {
-        //         wx.setStorageSync('userInfo', {
-        //             ...wx.getStorageSync('userInfo'),
-        //             ...res.data
-        //         })
-        //     }).catch(()=>{
-        //         wx.redirectTo({
-        //             url: './pages/login/login',
-        //         })
-        //     })
-        // }
+        if (wx.getStorageSync('userInfo')) {
+            userSerivce.getUser().then(res => {
+                wx.setStorageSync('userInfo', {
+                    ...wx.getStorageSync('userInfo'),
+                    ...res.data
+                })
+            })
+        } 
 
         // userSerivce.getCode()
     },
     getGrade(grade) {
-        console.log(grade);
         if (grade) {
             grade = Number(grade);
             switch (grade) {

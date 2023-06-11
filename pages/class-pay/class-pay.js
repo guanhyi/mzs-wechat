@@ -123,12 +123,13 @@ Page({
             picError: true
         })
     },
-    // 拼团
+    // 拼团列表
     goPing() {
         wx.navigateTo({
             url: './assemble/assemble',
         })
     },
+    // 参团
     joinGroupBuy(e) {
         const {
             peoplelimit,

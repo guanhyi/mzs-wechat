@@ -11,8 +11,48 @@ Page({
         checkbox: false,
         visible: false,
         visibleAvatar: false,
+        gradeVisible: false,
+        gradeList: [{
+                label: '一年级',
+                value: 1
+            },
+            {
+                label: '二年级',
+                value: 2
+            },
+            {
+                label: '三年级',
+                value: 3
+            },
+            {
+                label: '四年级',
+                value: 4
+            },
+            {
+                label: '五年级',
+                value: 5
+            },
+            {
+                label: '六年级',
+                value: 6
+            },
+            {
+                label: '七年级',
+                value: 7
+            },
+            {
+                label: '八年级',
+                value: 8
+            },
+            {
+                label: '其他',
+                value: ''
+            },
+        ], // 年纪选择
+        garde: 1,
+        gardeText:"一年级",
         phone: '',
-        avatar: '../../assets/image/my.png',
+        avatar: '',
         nickname: '',
         to: '',
         groupId: '',
@@ -20,14 +60,14 @@ Page({
         subjectId: '',
         peoplelimit: '',
         price: '',
-        discount:''
+        discount: ''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        console.log(options);
+
         this.setData({
             to: options.to,
             sid: options.sid,
@@ -35,7 +75,7 @@ Page({
             subjectId: options.subjectId,
             price: options.price,
             peoplelimit: options.peoplelimit,
-            discount:options.discount
+            discount: options.discount
         })
     },
     /**
@@ -139,19 +179,41 @@ Page({
         })
 
     },
+    /**
+     * 获取年级
+     */
+    getGrade() {
+        this.setData({
+            gradeVisible: true
+        })
+    },
+    /**
+     * 选择年级
+     */
+    pickGrade(e) {
+        this.setData({
+            garde: e.detail.value[0],
+            gardeText:e.detail.label[0]
+        })
+    },
     submit() {
-
-
+        if(!this.data.nickname){
+            wx.showToast({
+              title: '请输入学生姓名',
+              icon:'error'
+            })
+            return
+        }
         wx.login({
             success: (res) => {
                 loginService.weixinRegist({
                     wxCode: res.code,
                     phoneNumber: this.data.phone,
-                    password: 123456,
+                    // password: 123456,
                     userId: this.data.phone,
                     nickName: this.data.nickname,
-                    headUrl: this.data.avatar,
-                    grade: '其他',
+                    headUrl: 'kerkr999',
+                    grade: this.data.garde,
                     deviceType: app.globalData.systemInfo.system.indexOf('iOS') > -1 ? 1 : 0,
                 }).then(re => {
                     if (re.data.code == 1000) {
@@ -161,7 +223,6 @@ Page({
                             title: '注册失败，请联系管理员',
                         })
                     }
-
                 })
             },
         })

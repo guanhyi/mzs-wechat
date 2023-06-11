@@ -109,7 +109,7 @@
                 {
                     "name": "分享",
                     "pathName": "pages/class-pay/share/share",
-                    "query": "id=2306081552224230000",
+                    "query": "id=2306101009296170000",
                     "launchMode": "default",
                     "scene": null
                 },
@@ -121,9 +121,16 @@
                     "scene": null
                 },
                 {
-                    "name": "22",
-                    "pathName": "pages/login/login",
-                    "query": "to=pages%2Fclass-pay%2Fclass-pay&sid=483&id=2306082028590290000&subjectId=1&peoplelimit=undefined&price=0.02",
+                    "name": "",
+                    "pathName": "pages/class-pay/share/share",
+                    "query": "id=2306091950277050000",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/class-detail/class-detail",
+                    "query": "id=3705&videocode=8edd11d2&buyif=false&pid=473",
                     "launchMode": "default",
                     "scene": null
                 }

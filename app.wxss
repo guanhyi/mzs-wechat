@@ -56,3 +56,6 @@ page {
 .mt-60rpx{
     margin-top: 60rpx;
 }
+.flex-1{
+    flex:1 1 auto;
+}

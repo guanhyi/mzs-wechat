@@ -13,8 +13,17 @@ Page({
         videoContext: null,
         duration: 0,
         currentTime: 0,
+        picError: false,
+        picErrorUrl: '../../assets/image/pic_article.png',
     },
-
+   /**
+     * 图片出错
+     */
+    picerror() {
+        this.setData({
+            picError: true
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */

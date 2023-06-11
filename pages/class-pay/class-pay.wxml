@@ -8,7 +8,7 @@
             <view class="className">{{ video['videoDetail']['className'] }}</view>
             <view class="name">{{ video['videoDetail']['title'] }}</view>
         </view>
-        <view class="startToOffTime">教材时间：{{ video['videoDetail']['createTime'] }} 至 {{ video['videoDetail']['offTime'] }}</view>
+        <!-- <view class="startToOffTime">教材时间：{{ video['videoDetail']['createTime'] }} 至 {{ video['videoDetail']['offTime'] }}</view> -->
     </view>
     <view class="item">
         <view class="sm-title">本教材简介</view>

@@ -25,13 +25,20 @@
     <t-popup visible="{{visibleAvatar}}" bind:visible-change="onVisibleAvatarChange" placement="center">
         <view class="phone-popup">
             <view class="info">
-                <view class="info-avater">
+                <!-- <view class="info-avater">
                     <image src="{{avatar}}" mode="widthFix" />
                     <button open-type="chooseAvatar" class="phone-btn" size="mini" bindchooseavatar="getAvatar">选择头像</button>
-                </view>
-                <input type="nickname" placeholder="请输入昵称" model:value="{{nickname}}"  />
+                </view> -->
+
+                <input type="nickname" placeholder="请输入学生姓名" model:value="{{nickname}}" />
+                <input type="city" placeholder="请选择年级" model:value="{{gardeText}}" bindtap="getGrade" disabled="{{true}}"/>
                 <button class="btn subimt-btn" bindtap="submit">确定</button>
             </view>
         </view>
+
     </t-popup>
+    <!-- 年纪选择 -->
+    <t-picker visible="{{gradeVisible}}" value="{{[garde]}}" data-key="garde" title="选择年级" cancelBtn="取消" confirmBtn="确认" bindchange="pickGrade">
+        <t-picker-item options="{{gradeList}}" />
+    </t-picker>
 </view>

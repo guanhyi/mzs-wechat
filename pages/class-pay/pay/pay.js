@@ -43,7 +43,7 @@ Page({
                 cityCode,
                 cityName,
                 mailPrice
-            } = res.data.rows.filter(it => it.cityCode === wx.getStorageSync('userInfo').provinceCode)[0]
+            } = wx.getStorageSync('userInfo')?.provinceCode ? res.data.rows.filter(it => it.cityCode === wx.getStorageSync('userInfo').provinceCode).length ? res.data.rows.filter(it => it.cityCode === wx.getStorageSync('userInfo').provinceCode)[0] : res.data.rows.filter(it => it.cityCode === "003033")[0] : res.data.rows.filter(it => it.cityCode === "003033")[0]
             this.setData({
                 cityList: this.initData(res.data.rows),
                 city: cityCode,
@@ -261,7 +261,7 @@ Page({
      * 团购
      */
     pinPay() {
-    
+
         let dt = {
             tradeType: 'JSAPI',
             userId: wx.getStorageSync('userInfo').userId,
@@ -288,11 +288,11 @@ Page({
                     wx.showToast({
                         title: '购买成功',
                     })
-                    const _url =res.data.pinUrl.split('?id=')
+                    const _url = res.data.pinUrl.split('?id=')
                     const id = _url[1]
                     wx.redirectTo({
                         url: `../share/share?id=${id}`,
-                      })
+                    })
                 },
             })
         })
@@ -301,7 +301,7 @@ Page({
      * 参加团购
      */
     pinUserPay() {
-   
+
         let dt = {
             tradeType: 'JSAPI',
             userId: wx.getStorageSync('userInfo').userId,
@@ -330,12 +330,12 @@ Page({
                     wx.showToast({
                         title: '购买成功',
                     })
-                    const _url =res.data.pinUrl.split('?id=')
+                    const _url = res.data.pinUrl.split('?id=')
                     const id = _url[1]
                     wx.redirectTo({
                         url: `../share/share?id=${id}`,
-                      })
-                  
+                    })
+
                 },
             })
         })
