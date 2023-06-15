@@ -77,6 +77,9 @@ Page({
             peoplelimit: options.peoplelimit,
             discount: options.discount
         })
+        if(wx.getStorageSync('userInfo') && options.to){
+            this.reTo()
+        }
     },
     /**
      * 账号密码登录
@@ -109,7 +112,6 @@ Page({
                                     url: '../home/home',
                                 })
                             }
-
                         }
                     })
                 },

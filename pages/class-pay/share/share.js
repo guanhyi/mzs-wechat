@@ -26,7 +26,7 @@ Page({
                     info: res.data.pinInfo,
                     time: new Date(res.data.pinInfo.expirationTime).getTime() - new Date().getTime(),
                     userInfo: res.data.userInfo,
-                    price: (res.data.pinInfo.realPrice * res.data.pinInfo.discountMember).toFixed(2)
+                    // price: (res.data.pinInfo.seriesPrice * res.data.pinInfo.discountMember).toFixed(2)
                 })
                 // this.scan()
             }
@@ -85,7 +85,6 @@ Page({
         ctx.setFillStyle('#FFf')
         ctx.fillRect(10, 40, 340, 100)
         const {
-            topicImg,
             typeName,
             typeInfo,
             realPrice
@@ -170,14 +169,14 @@ Page({
                         })
                     } else {
                         wx.navigateTo({
-                            url: `/pages/class-pay/pay/pay?title=团购本系列教材&price=${this.data.price}&videoCode=${res.data.videoList[0].videoCode}&pid=${info.sid}&type=3&status=${info.peopleLimit}&createTime=${re.data.endTime}&count=${info.discountMember}&groupId=${id}`,
+                            url: `/pages/class-pay/pay/pay?title=团购本系列教材&price=${info.realPrice}&videoCode=${res.data.videoList[0].videoCode}&pid=${info.sid}&type=3&status=${info.peopleLimit}&createTime=${re.data.endTime}&count=${info.discountMember}&groupId=${id}`,
                         })
                     }
                 })
             })
         }).catch(() => {
             wx.reLaunch({
-                url: `/pages/login/login?to=pages/class-pay/class-pay&sid=${info.sid}&id=${id}&subjectId=${info.pid}&peoplelimit=${info.peopleLimit}&price=${this.data.price}&discount=${info.discount}`,
+                url: `/pages/login/login?to=pages/class-pay/class-pay&sid=${info.sid}&id=${id}&subjectId=${info.pid}&peoplelimit=${info.peopleLimit}&price=${info.realPrice}&discount=${info.discount}`,
             })
         })
     }

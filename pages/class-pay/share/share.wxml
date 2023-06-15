@@ -13,8 +13,8 @@
                 {{info.typeInfo}}
             </text>
             <view >
-                <text class="share-price">￥{{price}}</text>
-                <text class="share-realPrice">￥ {{info.realPrice}}</text>
+                <text class="share-price">￥{{info.realPrice}}</text>
+                <text class="share-realPrice">￥ {{info.seriesPrice}}</text>
             </view>
             <view class="mt-20rpx label">
                 <text class="share-time">限时抢购</text>
@@ -40,7 +40,7 @@
         <view class="share-downtime">
             <view class="share-ht">
             </view>
-            <view wx:if="{{time>0 && info.peopleLimit != info.count}}" class="share-downtime-time">
+            <view wx:if="{{time>0 && info.peopleLimit != info.count && !info.ifVirtual == 1}}" class="share-downtime-time">
                 剩余 <t-count-down content="default" time="{{ time }}" theme="square"> </t-count-down>结束
             </view>
             <view wx:else style="color: red;">
@@ -69,8 +69,8 @@
             <text> 拼团须知玩法</text>
             <text class="share-cell-value">{{info.peopleLimit}}人参团</text>
         </view>
-        <view class="share-btns">
-            <button class="share-btn" block bindtap="home">立即参加</button>
+        <view class="share-btns" wx:if="{{time>0 && info.peopleLimit != info.count && info.ifVirtual === 1}}">
+            <button class="share-btn" block bindtap="home" >立即参加</button>
             <button class="share-btn" block open-type="share">转发</button>
         </view>
         <view class="share-footer">
